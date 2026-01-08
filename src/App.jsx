@@ -23,7 +23,7 @@ function App() {
   // - once it's fetched, put it in state
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`https://week-6-api.vercel.app/api/images`);
+      const response = await fetch(import.meta.env.VITE_API_URL);
       const data = await response.json();
       setImages(data);
     }
@@ -43,7 +43,7 @@ function App() {
 
       {images.length > 0 && (
         <div>
-          <img src={images[imgIndex].url} alt="" />
+          <img src={images[imgIndex].url} alt={images[imgIndex].alt} />
         </div>
       )}
     </>
