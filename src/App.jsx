@@ -9,14 +9,15 @@ function App() {
   const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
+    const apiURL = import.meta.env.VITE_API_URL;
+    const apiKey = import.meta.env.VITE_API_KEY;
     async function fetchData() {
-      const response = await fetch(import.meta.env.VITE_API_URL);
+      const response = await fetch(`${apiURL}?client_id=${apiKey}`);
       const data = await response.json();
       setImages(data);
     }
     fetchData();
   }, []);
-  // - when a user presses a button that should switch the image (left/right, up/down)
 
   const handleKeyDown = (event) => {
     if (event.key === "ArrowDown") {
@@ -35,16 +36,15 @@ function App() {
     <>
       <div tabIndex={0} onKeyDown={(event) => handleKeyDown(event)}>
         <div>
-          <ImageContainer
-            images={images}
-            imgIndex={imgIndex}
-            setImgIndex={setImgIndex}
-          />
+          <ImageContainer images={images} setImgIndex={setImgIndex} />
         </div>
 
         {images.length > 0 && (
           <div>
-            <img src={images[imgIndex].url} alt={images[imgIndex].alt} />
+            <img
+              src={images[imgIndex].urls.regular}
+              alt={images[imgIndex].alt_description}
+            />
           </div>
         )}
       </div>

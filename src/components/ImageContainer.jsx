@@ -1,19 +1,19 @@
-export default function ImageContainer({ images, imgIndex, setImgIndex }) {
-  function handleClick(id) {
-    setImgIndex(id - 1);
+export default function ImageContainer({ images, setImgIndex }) {
+  function handleClick(index) {
+    setImgIndex(index);
   }
 
   return (
     <section className="thumbnail-container">
-      {images.map((image) => (
+      {images.map((image, index) => (
         <div key={image.id}>
           <img
-            onClick={() => handleClick(image.id)}
+            onClick={() => handleClick(index)}
             onKeyDown={(event) => {
-              if (event.key === "Enter") handleClick(image.id);
+              if (event.key === "Enter") handleClick(index);
             }}
-            src={image.url}
-            alt={image.alt}
+            src={image.urls.small}
+            alt={image.alt_description}
             tabIndex={0}
           />
         </div>
