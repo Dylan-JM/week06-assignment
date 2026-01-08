@@ -1,23 +1,16 @@
 export default function ImageContainer({ images, setImgIndex }) {
-  function handleClick(index) {
-    setImgIndex(index);
-  }
-
   return (
-    <section className="thumbnail-container">
+    <div className="film-inner">
       {images.map((image, index) => (
-        <div key={image.id}>
-          <img
-            onClick={() => handleClick(index)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") handleClick(index);
-            }}
-            src={image.urls.small}
-            alt={image.alt_description}
-            tabIndex={0}
-          />
-        </div>
+        <div
+          key={image.id}
+          className="film-frame"
+          style={{ backgroundImage: `url(${image.urls.small})` }}
+          onClick={() => setImgIndex(index)}
+          onKeyDown={(e) => e.key === "Enter" && setImgIndex(index)}
+          tabIndex={0}
+        />
       ))}
-    </section>
+    </div>
   );
 }

@@ -1,23 +1,15 @@
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.thumbnail-container {
-  width: 100px;
-  height: 100px;
+.viewer {
+  flex: 1;
   display: flex;
-  position: absolute;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1;
-}
-
-.thumbnail-container img {
-  width: 100px;
-  height: 100px;
-  padding: 2px;
-  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }

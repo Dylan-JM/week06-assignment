@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import "./components/FilmReel.css";
 import ImageContainer from "./components/ImageContainer";
 import SearchBar from "./components/SearchBar";
 
@@ -47,18 +48,32 @@ function App() {
 
   return (
     <>
-      <div tabIndex={0} onKeyDown={(event) => handleKeyDown(event)}>
-        <SearchBar setInputValue={setInputValue} />
-        <div>
-          <ImageContainer images={images} setImgIndex={setImgIndex} />
+      <div
+        tabIndex={0}
+        onKeyDown={(event) => handleKeyDown(event)}
+        className="h-screen flex flex-col overflow-hidden"
+      >
+        <div className="w-full flex justify-center">
+          <SearchBar setInputValue={setInputValue} />
         </div>
 
         {images[imgIndex] && (
-          <div>
-            <img
-              src={images[imgIndex].urls.regular}
-              alt={images[imgIndex].alt_description}
-            />
+          <div className="flex flex-row flex-1 overflow-hidden w-full">
+            <div className="reel">
+              <ImageContainer images={images} setImgIndex={setImgIndex} />
+            </div>
+
+            <div className="flex-1 flex items-center justify-center overflow-hidden">
+              <img
+                src={images[imgIndex].urls.regular}
+                alt={images[imgIndex].alt_description}
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+
+            <div className="reel">
+              <ImageContainer images={images} setImgIndex={setImgIndex} />
+            </div>
           </div>
         )}
       </div>
