@@ -58,20 +58,15 @@ function App() {
         </div>
 
         {images[imgIndex] && (
-          <div className="flex flex-row flex-1 overflow-hidden w-full">
-            <div className="reel">
-              <ImageContainer images={images} setImgIndex={setImgIndex} />
-            </div>
-
-            <div className="flex-1 flex items-center justify-center overflow-hidden">
+          <div className="viewer-row">
+            <div className="center-area">
               <img
                 src={images[imgIndex].urls.regular}
                 alt={images[imgIndex].alt_description}
-                className="max-h-full max-w-full object-contain"
               />
             </div>
 
-            <div className="reel">
+            <div className="reel-area">
               <ImageContainer images={images} setImgIndex={setImgIndex} />
             </div>
           </div>

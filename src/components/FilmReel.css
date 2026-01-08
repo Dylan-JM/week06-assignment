@@ -1,23 +1,36 @@
 .viewer-row {
   display: flex;
-  flex: 1;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   overflow: hidden;
 }
 
-.reel {
+.center-area {
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-area img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.reel-area {
   width: 220px;
-  height: 100%;
-  background: #111;
-  position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
+  min-width: 220px;
+  max-width: 220px;
   flex-shrink: 0;
+  background: #111;
+  overflow-y: auto;
 }
 
 .film-inner {
-  height: auto;
   padding: 12px 0;
   display: flex;
   flex-direction: column;
@@ -26,7 +39,7 @@
   border-right: 10px dashed #fff;
 }
 
-.reel::before {
+.reel-area::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -45,22 +58,4 @@
   background-size: cover;
   background-position: center;
   cursor: pointer;
-}
-
-.center-image {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.film-inner::-webkit-scrollbar {
-  width: 6px;
-}
-
-.film-inner::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 3px;
 }
