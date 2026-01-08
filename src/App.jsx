@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import "./App.css";
+import ImageContainer from "./components/ImageContainer";
 
 // ! DO NOT PUT ALL CODE IN JUST App.jsx, USE COMPONENTS
 // Examples:
@@ -14,6 +16,7 @@ function App() {
   // -store api image data
   // current image
   const [images, setImages] = useState([]);
+  const [imgIndex, setImgIndex] = useState(0);
 
   // effects
   // - fetch data from the API
@@ -35,18 +38,14 @@ function App() {
     <>
       <h1>Gallery</h1>
       <div>
-        Thumbnail container, showing all images using .map make sure to use key
-        <ul>
-          {images.map((image) => (
-            <li key={image.id}>{image.title}</li>
-          ))}
-        </ul>
+        <ImageContainer images={images} setImgIndex={setImgIndex} />
       </div>
 
-      <div>
-        One big image, or a modal that is sometimes there when the user has
-        clicked an image. Conditional rendering.
-      </div>
+      {images.length > 0 && (
+        <div>
+          <img src={images[imgIndex].url} alt="" />
+        </div>
+      )}
     </>
   );
 }
